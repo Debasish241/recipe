@@ -15,7 +15,7 @@ import { useSignUp } from "@clerk/clerk-expo";
 import { authStyles } from "../../assets/styles/auth.styles";
 import { COLORS } from "../../constants/colors";
 import { Ionicons } from "@expo/vector-icons";
-import verifyEmail from "./verify-email";
+import VerifyEmail from "./verify-email";
 const signUpScreen = () => {
   const router = useRouter();
   const { isLoaded, signUp } = useSignUp();
@@ -54,10 +54,9 @@ const signUpScreen = () => {
       setLoading(false);
     }
   };
-
   if (pendingVerification)
     return (
-      <verifyEmail email={email} onBack={() => setPendingVerification(false)} />
+      <VerifyEmail email={email} onBack={() => setPendingVerification(false)} />
     );
 
   return (
