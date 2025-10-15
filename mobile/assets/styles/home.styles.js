@@ -31,7 +31,7 @@ export const homeStyles = StyleSheet.create({
     marginBottom: 24,
   },
   featuredCard: {
-    borderRadius: 24,
+    borderRadius: 20,
     overflow: "hidden",
     backgroundColor: COLORS.card,
     shadowColor: COLORS.shadow,
@@ -47,16 +47,18 @@ export const homeStyles = StyleSheet.create({
     height: 240,
     backgroundColor: COLORS.primary,
     position: "relative",
+    borderRadius:20
   },
   featuredImage: {
     width: "100%",
     height: "100%",
+    borderRadius:20
   },
   featuredOverlay: {
     ...StyleSheet.absoluteFillObject,
     backgroundColor: "rgba(0,0,0,0.3)",
     justifyContent: "space-between",
-    padding: 20,
+    padding: 20,borderRadius:20
   },
   featuredBadge: {
     backgroundColor: COLORS.primary,
@@ -97,7 +99,7 @@ export const homeStyles = StyleSheet.create({
     fontWeight: "600",
   },
   recipesSection: {
-    paddingHorizontal: 20,
+    paddingHorizontal: 16,
     marginTop: 8,
   },
   sectionHeader: {
