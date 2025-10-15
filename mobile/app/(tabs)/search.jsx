@@ -12,6 +12,7 @@ import { searchStyles } from "../../assets/styles/search.styles";
 import { Ionicons } from "@expo/vector-icons";
 import { COLORS } from "../../constants/colors";
 import RecipeCard from "../../components/RecipeCard";
+import LoadingSpinner from "../../components/LoadingSpinner";
 const SearchScreen = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [recipes, setRecipes] = useState([]);
@@ -84,7 +85,7 @@ const SearchScreen = () => {
     handleSearch();
   }, [debounceSearchQuery, initialLoading]);
 
-  if (initialLoading) return <Text>Loading some data...</Text>;
+  if (initialLoading) return <LoadingSpinner message="Loading recipes..." />;
 
   return (
     <View style={searchStyles.container}>
@@ -130,7 +131,7 @@ const SearchScreen = () => {
         </View>
         {loading ? (
           <View style={searchStyles.loadingContainer}>
-            <Text>Loading...</Text>
+            <LoadingSpinner message="Searching recipes..." size="small" />
           </View>
         ) : (
           <FlatList
