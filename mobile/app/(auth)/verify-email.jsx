@@ -19,6 +19,29 @@ const VerifyEmail = ({ onBack, email }) => {
   const [code, setCode] = useState("");
   const [loading, setLoading] = useState(false);
 
+  // const handleVerification = async () => {
+  //   if (!isLoaded) return;
+
+  //   setLoading(true);
+  //   try {
+  //     const signUpAttempt = await signUp.attemptEmailAddressVerification({
+  //       code,
+  //     });
+
+  //     if (signUpAttempt.status === "complete") {
+  //       await setactive({ session: signUpAttempt.createdSessionId });
+  //     } else {
+  //       Alert.alert("Error", "Verification failed. Please try again later");
+  //       console.error(JSON.stringify(signUpAttempt, null, 2));
+  //     }
+  //   } catch (error) {
+  //     Alert.alert("Error", error.errors?.[0]?.message || "Verification failed");
+  //     console.error(JSON.stringify(signUpAttempt, null, 2));
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
   const handleVerification = async () => {
     if (!isLoaded) return;
 
@@ -35,8 +58,9 @@ const VerifyEmail = ({ onBack, email }) => {
         console.error(JSON.stringify(signUpAttempt, null, 2));
       }
     } catch (error) {
+      // ✅ Removed reference to signUpAttempt
       Alert.alert("Error", error.errors?.[0]?.message || "Verification failed");
-      console.error(JSON.stringify(signUpAttempt, null, 2));
+      console.error("Verification error:", JSON.stringify(error, null, 2));
     } finally {
       setLoading(false);
     }
