@@ -5,13 +5,16 @@ import { db } from "./config/db.js";
 import { favouritesTable } from "./db/schema.js";
 import { and, eq } from "drizzle-orm";
 import job from "./config/cron.js";
-
+import morgan from "morgan"
+import cors from "cors"
 const app = express();
-const PORT = ENV.PORT || 5001;
+const PORT = ENV.PORT || 8000;
 
 if(ENV.NODE_ENV==="production") job.start()
 
 app.use(express.json());
+app.use(morgan("dev"))
+app.use(cors());
 
 app.get("/api/health", (req, res) => {
   res.status(200).json({ success: true });
@@ -75,6 +78,9 @@ app.get("/api/favourites/:userId", async (req, res) => {
     res.status(500).json({ error: "Something went wrong" });
   }
 });
+app.get("/",(req,res)=>{
+  res.json({message:"server is running"})
+})
 
 app.listen(PORT, () => {
   console.log(`server is running on PORT :${PORT}`);
